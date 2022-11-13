@@ -1,0 +1,140 @@
+﻿@model IEnumerable<KLTN_QuanLyLuuTruHoSo.Models.HOSO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    var stt = 0;
+}
+
+<link href="~/Template/css/css-list-btn.css" rel="stylesheet" />
+
+<div class="css-inp">
+    <span>QUẢN LÝ LƯU TRỮ HỒ SƠ</span>
+</div>
+<div class="container css-list-ql">
+    <div style="width:100%;height:100%">
+        <div class="row">
+            <div class="col-md-3" style=" padding-top: 2%; padding-bottom: 2%; display:flex">
+                @Html.ActionLink("THÊM HỒ SƠ", "ThemHoSo", null, new { @class = "css-ins" })
+            </div>
+            <div class="col-md-9" style=" padding-top: 2%;">
+                @Html.Action("TimKiemHoSo", "QLLT_HoSo")
+                <span style="color: #877575; margin-left: 2%; font-style: italic; ">Tìm kiếm theo tên hồ sơ</span>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div style="overflow:auto" class="col-md-10">
+                <table class="table table-bordered table-striped table-responsive-stack table-hover " style="font-family: auto; text-align:center">
+                    <tr style=" background-color: #398B93; color: white;">
+                        <th>STT</th>
+                        <th>
+                            HỘP
+                        </th>
+                        <th>
+                            LOẠI HỒ SƠ
+                        </th>
+                        <th>
+                            PHÒNG
+                        </th>
+                        <th>
+                            TÊN HỒ SƠ
+                        </th>
+                        <th>
+                            SỐ LƯỢNG TL
+                        </th>
+                        <th>
+                            NGÀY BD
+                        </th>
+                        <th>
+                            NGÀY KT
+                        </th>
+                        <th>
+                            THỜI GIAN BẢO QUẢN
+                        </th>
+                        <th>
+                            NGÀY TẠO
+                        </th>
+                        <th>
+                            NGÀY CẬP NHẬT
+                        </th>
+                        <th>
+                            TRẠNG THÁI
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        stt++;
+                        <tr>
+                            <td>@stt</td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HOP.TENHOP)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LOAIHOSO.TENLOAI)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PHONGBAN.TENPHONG)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TENHOSO)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SLTAILIEU)
+                                @Html.ActionLink("Sửa", "SuaHoSo", new { id = item.ID }, new { @class = "btn btn-danger", style = "opacity: 0; pointer-events: none; width: 0px; margin-right: -18%;" })
+                            </td>
+                            <td>
+                                @item.NGAYBD.Value.ToString("dd - MM - yyyy")
+                                @*@Html.DisplayFor(modelItem => item.NGAYBD)*@
+                            </td>
+                            <td>
+                                @item.NGAYKT.Value.ToString("dd - MM - yyyy")
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.THOIGIANBAOQUAN)
+                            </td>
+                            <td>
+                                @item.NGAYTAO.Value.ToString("dd - MM - yyyy")
+                            </td>
+                            <td>
+                                @item.NGAYCAPNHAT.Value.ToString("dd - MM - yyyy")
+                            </td>
+                            <td>
+                                @if (item.TRANGTHAI == true)
+                                {
+                                    <span style=" background-color: #43d625; border-radius: 27px; color: white; padding: 3px 15px;">Hoạt động</span>
+                                }
+                                else
+                                {
+                                    <span style="background-color: #db1b1b; border-radius: 27px; color: white; padding: 3px 15px; ">Không hoạt động</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+            <div class="col-md-2">
+                <table class="table table-bordered table-striped table-responsive-stack table-hover " style="font-family: auto; text-align: center; ">
+                    <tr style=" background-color: #398B93; color: white;">
+                        <th>
+                            CHỨC NĂNG
+                        </th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.ActionLink("Sửa", "SuaHoSo", new { id = item.ID }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("Xóa", "XoaHoSo", new { id = item.ID }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

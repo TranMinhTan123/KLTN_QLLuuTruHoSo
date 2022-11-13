@@ -1,0 +1,71 @@
+﻿@model KLTN_QuanLyLuuTruHoSo.Models.HOP
+
+@{
+    ViewBag.Title = "ThemHop";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<link href="~/Template/css/css-list-btn.css" rel="stylesheet" />
+<div class="container">
+    <div style="text-align:center">
+        <h3>THÊM HỘP LƯU TRỮ</h3>
+    </div>
+    <div style="padding-bottom:1%">
+        @Html.ActionLink("< BACK", "Index", null, new { @class = "css-back" })
+    </div>
+    <div>
+        @Html.ActionLink("BACK", "Index", new { @class = "css-ins" })
+    </div>
+    @using (Html.BeginForm("XuLyThemHop", "DMLT_HopCap", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <table class="table table-striped">
+                <tr>
+                    <td style="font-weight: 700;">
+                        TÊN KỆ
+                    </td>
+                    <td>
+                        @Html.DropDownList("ID_KE", null, new { @class = "form-control" })
+                    </td>
+                    <td style="font-weight: 700;">
+                        TÊN HỘP
+                    </td>
+                    <td style="font-weight: 700;">
+                        @Html.TextBoxFor(model => model.TENHOP, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TENHOP)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 700;">
+                        SỐ HỒ SƠ ĐẶT
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.SLHOSO_DAT, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SLHOSO_DAT)
+                    </td>
+                    <td style="font-weight: 700;">
+                        NGÀY KẾT THÚC
+                    </td>
+                    <td>
+                        <input type="date" name="dtNgayKT" class="form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 700;">TRẠNG THÁI</td>
+                    <td >
+                        @Html.RadioButtonFor(model => model.TRANGTHAI, "true") Hoạt động
+                        @Html.RadioButtonFor(model => model.TRANGTHAI, "false") Không hoạt động
+                    </td>
+                    <td colspan="2">
+                        <input type="submit" id="submit1" value="Thêm" class="btn btn-danger " />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    }
+</div>
+
+
+

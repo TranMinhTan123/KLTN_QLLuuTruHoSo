@@ -1,0 +1,81 @@
+﻿@model KLTN_QuanLyLuuTruHoSo.Models.HOSO
+
+@{
+    ViewBag.Title = "ThemHoSo";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<link href="~/Template/css/css-list-btn.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="text-center">
+        <h3>THÊM HỒ SƠ LƯU TRỮ</h3>
+    </div>
+    <div style="padding-bottom:1%">
+        @Html.ActionLink("< BACK", "Index", null, new { @class = "css-back" })
+    </div>
+    @using (Html.BeginForm("XuLyThemHoSo", "QLLT_HoSo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <table class="table table-striped">
+                <tr>
+                    <td style="font-weight: 700;">
+                        HỌP
+                    </td>
+                    <td>
+                        @Html.DropDownList("ID_HOP", null, new { @class = "form-control" })
+                    </td>
+                    <td style="font-weight: 700;">
+                        LOẠI HỒ SƠ
+                    </td>
+                    <td>
+                        @Html.DropDownList("ID_LOAIHS", null, new { @class = "form-control" })
+                    </td>
+                    <td style="font-weight: 700;">
+                        PHÒNG
+                    </td>
+                    <td>
+                        @Html.DropDownList("ID_PHONGBAN", null, new { @class = "form-control" })
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 700;" >
+                        TÊN HỒ SƠ 
+                    </td>
+                    <td colspan="3">
+                        @Html.TextBoxFor(model => model.TENHOSO, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TENHOSO)
+                    </td>
+                    @*<td style="font-weight: 700;">
+                        THỜI GIAN BẢO QUẢN
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.THOIGIANBAOQUAN, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.THOIGIANBAOQUAN)
+                    </td>*@
+                    <td style="font-weight: 700;">
+                        NGÀY KẾT THÚC
+                    </td>
+                    <td>
+                        <input type="date" name="dtNgayKT" class="form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 700;">TRẠNG THÁI</td>
+                    <td colspan="2" >
+                        @Html.RadioButtonFor(model => model.TRANGTHAI, "true") Hoạt động
+                        @Html.RadioButtonFor(model => model.TRANGTHAI, "false") Không hoạt động
+                    </td>
+                    <td colspan="3">
+                        <input type="submit" id="submit1" value="Thêm" class="btn btn-danger " />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    }
+</div>
+
+
+

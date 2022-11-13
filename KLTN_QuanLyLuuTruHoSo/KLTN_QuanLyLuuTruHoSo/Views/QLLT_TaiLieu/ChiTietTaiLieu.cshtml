@@ -1,0 +1,68 @@
+﻿@using KLTN_QuanLyLuuTruHoSo.Models;
+@model List<TAILIEU>
+
+@*<div>
+    <div>
+        <table>
+            <tr>
+                <td>ID</td>
+                <td>Hồ Sơ</td>
+                <td>Nơi Ban Hành</td>
+                <td>Tên TL</td>
+                <td>Loại TL</td>
+                <td>Số tờ</td>
+                <td>Dạng</td>
+                <td>Người gửi</td>
+                <td>Người nhận</td>
+                <td>Người ký</td>
+            </tr>
+            @foreach (var tl in Model)
+            {
+                <tr>
+                    <td>@tl.ID</td>
+                    <td>@tl.HOSO.TENHOSO</td>
+                    <td>@tl.NOIBANHANH.TENNBH</td>
+                    <td>@tl.TENTL</td>
+                    <td>@tl.LOAITL</td>
+                    <td>@tl.SOTO</td>
+                    <td>@tl.DANG</td>
+                    <td>@tl.NGUOIGUI</td>
+                    <td>@tl.NGUOINHAN</td>
+                    <td>@tl.NGUOIKY</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div>
+        <table>
+            <tr>              
+                <td>Người duyệt</td>
+                <td>Ngày ban hành</td>
+                <td>Nội dung</td>
+                <td>Hình ảnh</td>
+                <td>Đường dẫn</td>
+                <td>Tình trạng</td>
+                <td>Trạng thái</td>
+                <td>Ngày tạo</td>
+                <td>Ngày cập nhật</td>
+                <td>Ghi chú</td>
+
+            </tr>
+            @foreach (var tl in Model)
+            {
+                <tr>                   
+                    <td>@tl.NGUOIDUYET</td>
+                    <td>@tl.NGAYBANHANH</td>
+                    <td>@tl.NOIDUNG</td>
+                    <td>@tl.HINHANH</td>
+                    <td>@tl.DUONGDAN</td>
+                    <td>@tl.TINHTRANG</td>
+                    <td>@tl.TRANGTHAI</td>
+                    <td>@tl.NGAYTAO</td>
+                    <td>@tl.NGAYCAPNHAT</td>
+                    <td>@tl.GHICHU</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>*@

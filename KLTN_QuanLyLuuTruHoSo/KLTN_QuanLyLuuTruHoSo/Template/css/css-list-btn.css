@@ -1,0 +1,31 @@
+﻿body {
+}
+.css-ins{
+    font-weight: 700;
+    background-color: #30ebe7;
+    padding: 10px;
+    border-radius: 5px;
+}
+.css-ins:hover{
+    background-color:#1d98d4;
+}
+.css-inp{
+    font-weight: 700;
+    font-size:20px;
+    text-align:center;
+}
+.css-back{
+    font-weight: 700;
+    background-color: #04AA6D;
+    padding: 10px;
+    border-radius: 5px;
+}
+.css-back:hover{
+    background-color:#059862;
+}
+.css-list-ql{
+    margin-top: 3%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+}
